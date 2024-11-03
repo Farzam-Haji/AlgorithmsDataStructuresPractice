@@ -2,9 +2,11 @@
 #example:
 # Input: strs = ["eat","tea","tan","ate","nat","bat"]
 #Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
-strs = ["eat","tea","tan","ate","nat","bat"]
-#hashmap 
-def hashmap(arr):
+
+
+#character frequency counting / frequency-based hashing
+#time= O(k.n)  space= O(k.n) / n = max number of words k = max letters 
+def CharacterFrequency(arr):
 
     hmap = {}
 
@@ -20,4 +22,22 @@ def hashmap(arr):
 
     return list(hmap.values())
 
-print (hashmap(strs))
+# print (CharacterFrequency(strs))
+
+
+#sort and hashmap
+#time = O(n.k logk)  space = O(n.k)
+def Sort(arr):
+    
+    hmap = {}
+
+    for word in arr:
+        sorted_word = ''.join(sorted(word))
+        if sorted_word in hmap:
+            hmap[sorted_word].append(word)
+        else:
+            hmap[sorted_word] = [word]
+
+    return list(hmap.values())
+
+# print(Sort(strs))
